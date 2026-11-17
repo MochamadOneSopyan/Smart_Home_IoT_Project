@@ -1,0 +1,77 @@
+{
+  "version": 1,
+  "author": "Kelompok 4",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "wokwi-esp32-devkit-v1", "id": "esp", "top": 0, "left": 0, "attrs": {} },
+    {
+      "type": "wokwi-photoresistor-sensor",
+      "id": "ldr",
+      "top": -121.6,
+      "left": -229.6,
+      "attrs": { "lux": "500" }
+    },
+    { "type": "wokwi-pir-motion-sensor", "id": "pir", "top": -120.8, "left": 223.02, "attrs": {} },
+    {
+      "type": "wokwi-pushbutton",
+      "id": "button",
+      "top": 210,
+      "left": -180,
+      "attrs": { "color": "blue", "bounce": "1" }
+    },
+    { "type": "wokwi-neopixel", "id": "pixel", "top": 30, "left": 240, "attrs": {} },
+    {
+      "type": "wokwi-buzzer",
+      "id": "buzzer",
+      "top": 194.4,
+      "left": 232.2,
+      "attrs": { "volume": "0.1" }
+    },
+    {
+      "type": "wokwi-relay-module",
+      "id": "relay",
+      "top": 320,
+      "left": 20,
+      "attrs": { "transistor": "pnp" }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "load",
+      "top": 330,
+      "left": 250,
+      "attrs": { "color": "yellow", "label": "Lampu Utama" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "resistor",
+      "top": 410,
+      "left": 230,
+      "attrs": { "value": "220" }
+    }
+  ],
+  "connections": [
+    [ "esp:TX0", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX0", "$serialMonitor:TX", "", [] ],
+    [ "ldr:VCC", "esp:3V3", "red", [] ],
+    [ "ldr:GND", "esp:GND.1", "black", [] ],
+    [ "ldr:AO", "esp:D34", "green", [] ],
+    [ "pir:VCC", "esp:VIN", "red", [] ],
+    [ "pir:GND", "esp:GND.1", "black", [] ],
+    [ "pir:OUT", "esp:D27", "green", [] ],
+    [ "button:1.l", "esp:D14", "blue", [] ],
+    [ "button:2.l", "esp:GND.1", "black", [] ],
+    [ "pixel:VDD", "esp:VIN", "red", [] ],
+    [ "pixel:VSS", "esp:GND.1", "black", [] ],
+    [ "pixel:DIN", "esp:D26", "green", [] ],
+    [ "buzzer:1", "esp:GND.1", "black", [] ],
+    [ "buzzer:2", "esp:D25", "purple", [] ],
+    [ "relay:VCC", "esp:VIN", "red", [] ],
+    [ "relay:GND", "esp:GND.1", "black", [] ],
+    [ "relay:IN", "esp:D33", "orange", [] ],
+    [ "relay:COM", "esp:3V3", "red", [] ],
+    [ "relay:NO", "load:A", "orange", [] ],
+    [ "load:C", "resistor:1", "green", [] ],
+    [ "resistor:2", "esp:GND.1", "black", [] ]
+  ],
+  "dependencies": {}
+}
